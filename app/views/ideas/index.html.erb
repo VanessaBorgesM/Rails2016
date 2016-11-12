@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome da cor</th>
+      <th>Código</th>
+      <th>Imagem</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ideas.each do |idea| %>
+      <tr>
+        <td><%= idea.name %></td>
+        <td><%= idea.description %></td>
+        <td><%= image_tag(idea.picture_url, width: 100) if idea.picture.present? %></td>
+        <td><%= link_to 'Mostrar', idea %></td>
+        <td><%= link_to 'Editar', edit_idea_path(idea) %></td>
+        <td><%= link_to 'Excluir', idea, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Idea', new_idea_path %>
